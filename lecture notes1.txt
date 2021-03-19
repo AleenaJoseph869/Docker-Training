@@ -1,0 +1,59 @@
+Running single docker container:
+
+docker run -it ubuntu /bin/bash : To run and import
+
+
+docker start <container id> : To start exited container
+docker attach <container id> : To see it on the screen
+docker stop <id> : To stop the running container
+docker rm <id> : To remove the container
+
+To run a removed container:
+docker run -it container name
+
+
+Running multiple containers from commands:
+
+docker run -it -d --rm --name linux1 ubuntu /bin/bash : To run it in background
+
+docker attach linux1 : To run a container
+
+Running containers with a shared host file system:
+
+Host-directory:client-directory -> -v
+eg: docker run --rm -v ${PWD}:/myvol ubuntu /bin/bash -c "ls -lha > /myvol/myfile.tx"
+
+Mounting onto specific directory:
+docker run -it --rm -v /$PWD:/myfiles --name myscript php:7.0-cli /bin/bash
+
+Share across containers :
+docker run -it --rm --name myscript php:7.2-cli /bin/bash
+
+~/ index.php
+
+
+To print in python:
+echo '<? echo "test text\n";' > /myfiles/index.php
+php /myfiles/index.php : To show the msg
+
+To directly run without creating container:
+docker run -it --rm -v /$PWD:/myfiles -w /myfiles --name myscript php:7.2-cli php index.php
+
+To see list of containers recently closed : docker ps -a
+
+httpd:
+docker exec -it <id> /bin/bash
+docker run -d -p 9090:80 httpd
+
+
+docker run -d -p 9090:80 -v /$PWD:/var/www/html php:7.2-apache
+
+docker login
+docker tag mycurl ustapi/mycurl:latest
+docker push ustapi/mycurl:latest
+
+docker pull ustapi/mycurl:latest
+
+docker username/repository:tag
+
+docker tag mycurl <username>/mycurl:latest

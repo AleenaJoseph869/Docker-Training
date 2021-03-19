@@ -1,0 +1,15 @@
+To start a container with a volume ->
+  docker run -d --name testmount --mount source=myvol,target=/app nginx:latest
+
+To check volumes:
+docker volume ls
+docker inspect <volumename>
+docker container stop testmount
+docker container rm testmount
+docker volume rm myvol
+
+Container with volume:
+
+docker run -d --name testmount -v myvol:/app nginx:latest
+
+
