@@ -1,0 +1,36 @@
+1.  Connecting machine from putty
+
+2.  sudo su -
+
+3.  apt-get update && apt-get install -y docker.io
+
+
+4.  apt-get update && apt-get install -y apt-transport-https
+
+5.  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+
+cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+
+apt-get update
+
+6.  apt-get install -y kubelet kubeadm kubectl
+
+echo "Environment="KUBELET_CGROUP_ARGS=--cgroup-driver=cgroupfs"" >> /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+
+7.  //Restarting of the kubelet service
+
+systemctl restart kubelet
+
+systemctl daemon-reload
+
+8.  Initialize master and join worker
+
+kubeadm init
+
+//steps in notebook
+
+
+

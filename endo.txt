@@ -1,0 +1,26 @@
+ You can bootstrap a cluster as follows:
+
+ 1. Initializes cluster master node:
+
+ kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16
+
+
+ 2. Initialize cluster networking:
+
+kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml
+
+
+ 3. (Optional) Create an nginx deployment:
+
+ kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/application/nginx-app.yaml
+
+step 1: Add new instance
+step 2: Initialize Master node
+Step 3: Add another instance
+step 4: join the instance as a worker to the cluster
+step 5: Run kubectl run command to start container in a pod
+
+
+
+kubeadm join 192.168.0.33:6443 --token 6y367k.o9f8od8hfx2oza1a \
+    --discovery-token-ca-cert-hash sha256:1669b8db35b7e584adf1ceedc790ca12bb698c28ff402a8c14bc5b5165f827bc

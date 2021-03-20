@@ -1,0 +1,18 @@
+Yaml service config:
+
+1. Metadata
+2. Specifications
+3. Status: Automatically generated and added by kubernetes
+
+
+
+
+2 deployment / pod
+2 services
+1 config map
+1 secret
+      db user
+      db password
+
+web url -> mongo-express (ES) -> mongo express (pod) -> mongo-db (is)
+db url -> mongodb(pod)
